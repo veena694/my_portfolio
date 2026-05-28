@@ -141,3 +141,18 @@
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 122, 0, 0.1);
 }
+
+@media (max-width: 1024px) {
+  .heroOverlay {
+    align-items: center;
+    text-align: center;
+  }
+  .techPillsWrapper {
+    justify-content: center;
+  }
+  .internshipCard {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
