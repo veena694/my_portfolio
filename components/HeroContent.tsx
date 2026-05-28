@@ -80,7 +80,7 @@ export default function HeroContent() {
 
       {/* Cinematic subtitle description */}
       <p ref={subtitleRef} className={styles.subtitle} id="hero-subtitle">
-        Full Stack Developer passionate about building immersive digital experiences, scalable applications, AI-powered platforms, and modern web products using React, Next.js, Node.js, TypeScript, MongoDB, Three.js, GSAP, and modern frontend technologies.
+        Full Stack Developer passionate about building immersive digital experiences, scalable applications, AI-powered platforms, and modern web products using React, Next.js, Node.js, TypeScript, MongoDB, and modern frontend technologies.
       </p>
 
       {/* Dynamic tech stack pills */}
