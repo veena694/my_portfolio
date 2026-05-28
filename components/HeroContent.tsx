@@ -58,8 +58,6 @@ export default function HeroContent() {
     "MongoDB",
     "PostgreSQL",
     "Prisma",
-    "GSAP",
-    "Three.js",
     "TailwindCSS",
     "Supabase",
   ];
