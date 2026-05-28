@@ -55,12 +55,41 @@ export default function AboutSection() {
     );
   }, []);
 
-  const skillsData = {
-    Frontend: ["React.js", "Next.js", "TypeScript", "GSAP", "Three.js", "TailwindCSS"],
-    Backend: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "Prisma"],
-    Tools: ["Git", "GitHub", "Docker", "Railway", "Vercel", "Supabase"],
-    Design: ["Figma", "UX/UI Design", "Responsive Design", "Motion Design"],
-  };
+const skillsData = {
+  Frontend: [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "React.js",
+    "Next.js",
+    "TypeScript",
+    "TailwindCSS",
+  ],
+
+  Backend: [
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "PostgreSQL",
+    "Prisma",
+  ],
+
+  Tools: [
+    "Git",
+    "GitHub",
+    "Docker",
+    "Railway",
+    "Vercel",
+    "Supabase",
+  ],
+
+  Design: [
+    "Figma",
+    "UX/UI Design",
+    "Responsive Design",
+    "Motion Design",
+  ],
+};
 
   return (
     <section ref={sectionRef} className={styles.aboutSection} id="about-section-container">
@@ -80,7 +109,7 @@ export default function AboutSection() {
               Hi, I’m <strong>Veena</strong> — a Full Stack Developer passionate about building immersive digital experiences, scalable full-stack applications, and AI-powered platforms.
             </p>
             <p>
-              I specialize in modern frontend engineering using <strong>React, Next.js, TypeScript, GSAP, and Three.js</strong> while also building scalable backend systems with <strong>Node.js, Express.js, MongoDB, PostgreSQL, and Prisma</strong>.
+              I specialize in modern frontend engineering using <strong>React, Next.js, JavaScript, TypeScript</strong> while also building scalable backend systems with <strong>Node.js, Express.js, MongoDB, PostgreSQL, and Prisma</strong>.
             </p>
             <p>
               My focus is creating products that combine performance, functionality, and cinematic user experiences. I enjoy transforming ideas into modern digital products with elegant UI architecture and immersive interactions.
