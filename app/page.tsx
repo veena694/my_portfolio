@@ -6,6 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import CertificationsSection from "@/components/CertificationsSection";
 import ContactSection from "@/components/ContactSection";
 
 // Dynamically import Three.js particle layer with SSR disabled to make page load instantly!
@@ -36,6 +37,7 @@ export default function Home() {
         <ServicesSection />
         <ProjectsSection />
         <ExperienceSection />
+        <CertificationsSection />
         <ContactSection />
       </div>
     </main>

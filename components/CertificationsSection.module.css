@@ -1,0 +1,217 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 120px 40px;
+  background-color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--accent-warm);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.titleHighlight {
+  background: linear-gradient(135deg, var(--accent-warm) 0%, #ff5100 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+/* Certifications responsive grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Glassmorphic certification cards */
+.card {
+  position: relative;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+  gap: 20px;
+  border-radius: 16px;
+  transition: all 0.4s var(--transition-slow);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    800px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 122, 0, 0.04),
+    transparent 40%
+  );
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 122, 0, 0.3);
+  box-shadow: 0 12px 30px rgba(255, 122, 0, 0.05),
+              inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.badgeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 122, 0, 0.08);
+  border: 1px solid rgba(255, 122, 0, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.awardIcon {
+  color: var(--accent-warm);
+}
+
+.issuer {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-warm);
+  letter-spacing: 0.02em;
+}
+
+.date {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.certTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.card:hover .certTitle {
+  color: #ffffff;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  margin-top: 10px;
+}
+
+.credentialId {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  font-family: monospace;
+}
+
+/* Micro-animated glass verify button */
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.linkIcon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.linkButton:hover {
+  background: rgba(255, 122, 0, 0.1);
+  border-color: rgba(255, 122, 0, 0.3);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 122, 0, 0.15);
+}
+
+.linkButton:hover .linkIcon {
+  transform: translate(1px, -1px);
+}
+
+/* Adjust grid gap and layout for small devices */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 24px;
+  }
+  .container {
+    gap: 48px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .card {
+    padding: 24px;
+    min-height: 200px;
+  }
+}
