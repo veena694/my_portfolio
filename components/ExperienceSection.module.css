@@ -1,0 +1,205 @@
+.experienceSection {
+  position: relative;
+  width: 100%;
+  padding: 120px 40px;
+  background-color: var(--bg-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+.sectionLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--accent-warm);
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.headingHighlight {
+  background: linear-gradient(135deg, var(--accent-warm) 0%, #ff5100 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Timeline vertical layout rails */
+.timeline {
+  position: relative;
+  width: 100%;
+  padding-left: 40px; /* Left aligned on mobile, centered on larger screens */
+}
+
+.timelineLine {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-warm) 0%,
+    rgba(255, 122, 0, 0.4) 60%,
+    rgba(0, 113, 227, 0.2) 100%
+  );
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 50px;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateX(-20px);
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline glowing node point */
+.timelineNode {
+  position: absolute;
+  left: -40px; /* Align precisely with timeline line */
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #050507;
+  border: 2px solid var(--accent-warm);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 122, 0, 0.6);
+}
+
+.timelineItem:hover .timelineNode {
+  background-color: var(--accent-warm);
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--accent-warm);
+}
+
+/* Glassmorphic timeline card contents */
+.timelineContent {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.4s var(--transition-slow);
+}
+
+.timelineItem:hover .timelineContent {
+  border-color: rgba(255, 122, 0, 0.3);
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.roleTitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.companyName {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-warm);
+}
+
+.itemDate {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.itemDescription {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+@media (min-width: 1024px) {
+  .timeline {
+    padding-left: 0;
+  }
+  .timelineLine {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .timelineItem {
+    width: 50%;
+    transform: none;
+    margin-bottom: 60px;
+  }
+  
+  /* Stagger items left and right of timeline line */
+  .timelineItem:nth-child(odd) {
+    left: 0;
+    padding-right: 60px;
+    text-align: right;
+  }
+  .timelineItem:nth-child(even) {
+    left: 50%;
+    padding-left: 60px;
+    text-align: left;
+  }
+  
+  .timelineItem:nth-child(odd) .itemHeader {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .timelineItem:nth-child(even) .itemHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timelineItem:nth-child(odd) .timelineNode {
+    left: auto;
+    right: -7px;
+  }
+  .timelineItem:nth-child(even) .timelineNode {
+    left: -7px;
+  }
+}
+
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 80px 24px;
+  }
+}

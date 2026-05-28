@@ -1,0 +1,143 @@
+.heroOverlay {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  pointer-events: none; /* Make clicks pass through to video player except on interactive pills */
+  padding: 0px;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--accent-warm);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateY(20px);
+  text-shadow: 0 0 10px rgba(255, 122, 0, 0.4);
+}
+
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  line-height: 0.9;
+}
+
+.mainTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateY(40px);
+}
+
+.mainTitleAccent {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--accent-warm) 0%, #ff5100 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateY(40px);
+}
+
+.subtitle {
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateY(30px);
+}
+
+/* Internship Badge Panel */
+.internshipCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 20px;
+  max-width: 600px;
+  margin-bottom: 28px;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateY(20px);
+  pointer-events: auto; /* Allow cursor interaction */
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.internshipCard:hover {
+  border-color: rgba(255, 122, 0, 0.3);
+  background: rgba(255, 122, 0, 0.02);
+}
+
+.internshipBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(0, 113, 227, 0.15);
+  border: 1px solid rgba(0, 113, 227, 0.35);
+  color: #55b2ff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.internshipText {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.internshipText strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Tech pills styles */
+.techPillsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  max-width: 600px;
+  opacity: 0; /* Animated via GSAP */
+  transform: translateY(20px);
+  pointer-events: auto; /* Allow hover */
+}
+
+.techPill {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  transition: all 0.3s var(--transition-medium);
+  cursor: default;
+}
+
+.techPill:hover {
+  background: rgba(255, 122, 0, 0.1);
+  border-color: rgba(255, 122, 0, 0.4);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 122, 0, 0.1);
+}

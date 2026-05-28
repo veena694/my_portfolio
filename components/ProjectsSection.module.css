@@ -1,0 +1,232 @@
+.projectsSection {
+  position: relative;
+  width: 100%;
+  padding: 120px 40px;
+  background-color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--accent-warm);
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.headingHighlight {
+  background: linear-gradient(135deg, var(--accent-warm) 0%, #ff5100 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Projects Showcase Stack */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.projectCard {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 0px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--glass-border);
+  background: rgba(10, 11, 16, 0.4);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard:hover {
+  border-color: rgba(255, 122, 0, 0.35);
+  box-shadow: 0 40px 80px -30px rgba(255, 122, 0, 0.18);
+  transform: translateY(-4px);
+}
+
+/* Image on hover zoom effects */
+.imageSide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.05);
+}
+
+/* Overlay gradient inside image */
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(5, 5, 7, 0.8) 0%,
+    rgba(5, 5, 7, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .projectCard {
+    grid-template-columns: 1fr;
+  }
+  .imageOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 5, 7, 0) 0%,
+      rgba(5, 5, 7, 0.75) 100%
+    );
+  }
+}
+
+/* Text Details Side styling */
+.textSide {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .textSide {
+    padding: 30px;
+  }
+  .projectsSection {
+    padding: 80px 24px;
+  }
+}
+
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.projectDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.badgeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techBadge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 122, 0, 0.08);
+  border: 1px solid rgba(255, 122, 0, 0.25);
+  color: var(--accent-warm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Hover reveal indicators */
+.actionButton {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--accent-warm);
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.actionButton svg {
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover .actionButton svg {
+  transform: translateX(4px);
+}
+
+.projectActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.actionButtonSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.actionButtonSecondary:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
