@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, Menu, X } from "lucide-react";
 import gsap from "gsap";
 import HeroContent from "./HeroContent";
 import styles from "./VideoIntro.module.css";
@@ -17,6 +17,7 @@ export default function VideoIntro() {
   const [showBadge, setShowBadge] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Sync controls (visual play/pause)
   const togglePlay = () => {
@@ -158,6 +159,8 @@ export default function VideoIntro() {
         {/* Top brand header */}
         <div className={styles.headerTop}>
           <div className={styles.brandName}>Veena</div>
+          
+          {/* Desktop Navigation */}
           <nav className={styles.navigationBar}>
             <a href="#about-section-container" className={styles.navLink}>About</a>
             <a href="#services-section-container" className={styles.navLink}>Services</a>
@@ -165,6 +168,27 @@ export default function VideoIntro() {
             <a href="#experience-section-container" className={styles.navLink}>Journey</a>
             <a href="#contact-section-container" className={styles.navLink}>Contact</a>
           </nav>
+
+          {/* Mobile Hamburger Button */}
+          <button 
+            className={styles.mobileMenuButton}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+            id="mobile-hamburger-btn"
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+
+          {/* Mobile Sleek Dropdown Drawer */}
+          {isMenuOpen && (
+            <div className={`${styles.mobileDropdown} glass-panel`} id="mobile-navigation-dropdown">
+              <a href="#about-section-container" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>About</a>
+              <a href="#services-section-container" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Services</a>
+              <a href="#projects-section-container" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Projects</a>
+              <a href="#experience-section-container" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Journey</a>
+              <a href="#contact-section-container" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Contact</a>
+            </div>
+          )}
         </div>
 
         {/* 2-Column Split Container */}

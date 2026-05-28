@@ -95,6 +95,7 @@
   align-items: center;
   width: 100%;
   padding: 40px 0 20px 0;
+  position: relative; /* Position context for mobile dropdown */
 }
 
 @media (max-width: 1024px) {
@@ -157,6 +158,81 @@
 
 .navLink:hover::after {
   width: 100%;
+}
+
+/* Mobile Hamburger Button style */
+.mobileMenuButton {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.mobileMenuButton:hover {
+  background: rgba(255, 122, 0, 0.1);
+  border-color: rgba(255, 122, 0, 0.3);
+  color: var(--accent-warm);
+  box-shadow: 0 0 12px rgba(255, 122, 0, 0.2);
+}
+
+/* Mobile Dropdown Panel */
+.mobileDropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 180px;
+  background: rgba(10, 11, 16, 0.94);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 122, 0, 0.22);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 99;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(255, 122, 0, 0.05);
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top right;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.mobileNavLink {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.mobileNavLink:last-child {
+  border-bottom: none;
+}
+
+.mobileNavLink:hover {
+  color: var(--accent-warm);
+  padding-left: 8px;
 }
 
 /* 2-Column Split Container */
@@ -366,21 +442,13 @@
     max-width: 290px;
   }
   .navigationBar {
-    display: flex;
-    gap: 16px;
+    display: none;
   }
-  .navLink {
-    font-size: 0.72rem;
+  .mobileMenuButton {
+    display: flex;
   }
 }
 @media (max-width: 480px) {
-  .navigationBar {
-    gap: 10px;
-  }
-  .navLink {
-    font-size: 0.65rem;
-    letter-spacing: 0.05em;
-  }
   .scrollIndicator {
     margin-bottom: 20px;
   }
