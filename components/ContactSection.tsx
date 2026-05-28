@@ -18,6 +18,18 @@ export default function ContactSection() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    // Check if mobile viewport to bypass ScrollTrigger and prevent blank screens
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      if (headerRef.current) {
+        gsap.set(headerRef.current.children, { opacity: 1, y: 0 });
+      }
+      if (cardsRef.current) {
+        gsap.set(cardsRef.current.children, { opacity: 1, y: 0 });
+      }
+      return;
+    }
+
     // Staggered reveal for headers
     gsap.fromTo(
       headerRef.current?.children || [],

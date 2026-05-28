@@ -17,6 +17,14 @@ export default function ExperienceSection() {
   useEffect(() => {
     if (!timelineRef.current || !headerRef.current) return;
 
+    // Check if mobile viewport to bypass ScrollTrigger and prevent blank screens
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      gsap.set(headerRef.current.children, { opacity: 1, y: 0 });
+      gsap.set(timelineRef.current.children, { opacity: 1, y: 0, x: 0 });
+      return;
+    }
+
     // Header reveal
     gsap.fromTo(
       headerRef.current.children,

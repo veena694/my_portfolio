@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Award, ExternalLink } from "lucide-react";
+import { Award } from "lucide-react";
 import styles from "./CertificationsSection.module.css";
 
 if (typeof window !== "undefined") {
@@ -86,6 +86,14 @@ export default function CertificationsSection() {
   useEffect(() => {
     if (!containerRef.current || !headerRef.current || !gridRef.current) return;
 
+    // Check if mobile viewport to bypass ScrollTrigger and prevent blank screens
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      gsap.set(headerRef.current.children, { opacity: 1, y: 0 });
+      gsap.set(gridRef.current.children, { opacity: 1, y: 0 });
+      return;
+    }
+
     // Header reveal animation
     gsap.fromTo(
       headerRef.current.children,
@@ -163,18 +171,6 @@ export default function CertificationsSection() {
                 {cert.credentialId && (
                   <span className={styles.credentialId}>ID: {cert.credentialId}</span>
                 )}
-                
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.linkButton}
-                  title={`View verified ${cert.title} credential`}
-                  id={`cert-link-${cert.id}`}
-                >
-                  <span>Verify</span>
-                  <ExternalLink size={14} className={styles.linkIcon} />
-                </a>
               </div>
             </div>
           ))}

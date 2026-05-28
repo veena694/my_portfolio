@@ -366,7 +366,20 @@
     max-width: 290px;
   }
   .navigationBar {
-    display: none; /* Hide navigation bar on tablet/mobile header */
+    display: flex;
+    gap: 16px;
+  }
+  .navLink {
+    font-size: 0.72rem;
+  }
+}
+@media (max-width: 480px) {
+  .navigationBar {
+    gap: 10px;
+  }
+  .navLink {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
   }
   .scrollIndicator {
     margin-bottom: 20px;

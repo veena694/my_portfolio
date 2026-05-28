@@ -18,6 +18,18 @@ export default function AboutSection() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    // Check if mobile viewport to bypass ScrollTrigger and prevent blank screens
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      if (leftColRef.current) {
+        gsap.set(leftColRef.current.children, { opacity: 1, y: 0 });
+      }
+      if (rightColRef.current) {
+        gsap.set(rightColRef.current.children, { opacity: 1, y: 0 });
+      }
+      return;
+    }
+
     // ScrollTrigger entrance animation for left column content
     gsap.fromTo(
       leftColRef.current?.children || [],

@@ -18,6 +18,14 @@ export default function ProjectsSection() {
   useEffect(() => {
     if (!stackRef.current || !headerRef.current) return;
 
+    // Check if mobile viewport to bypass ScrollTrigger and prevent blank screens
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      gsap.set(headerRef.current.children, { opacity: 1, y: 0 });
+      gsap.set(stackRef.current.children, { opacity: 1, y: 0 });
+      return;
+    }
+
     // Header reveal animation
     gsap.fromTo(
       headerRef.current.children,
