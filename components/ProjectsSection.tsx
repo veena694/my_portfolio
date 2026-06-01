@@ -94,12 +94,12 @@ export default function ProjectsSection() {
     },
     {
       id: "ai-recipe",
-      title: "AI-Powered Recipe Generator",
-      description: "A gorgeous modern recipe generator integrating OpenAI's API. Provides contextual cooking recommendations based on ingredients, dietary rules, dynamic search, and custom animation menus.",
+      title: "Chef's AI Studio",
+      description: "A premium, hands-free culinary AI — scan your fridge, generate recipes in real time, cook step-by-step with voice commands, and remix dishes with a single tap. Built with React, Framer Motion, and OpenAI + Spoonacular APIs.",
       tech: ["React", "Node.js", "OpenAI API", "CSS Modules"],
       image: "/assets/images/ai_recipe.png",
-      deployedLink: "https://ai-recipe-genrator-8chx.vercel.app/", // Live Deployed
-      githubLink: "https://github.com/veena694/AI-Recipe-Genrator", // GitHub code
+      deployedLink: "https://chefs-ai-studio.vercel.app/", // Live Deployed
+      githubLink: "https://github.com/veena694/Chef-s-AI-Studio", // GitHub code
     },
     {
       id: "library-explorer",
