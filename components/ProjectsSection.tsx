@@ -66,6 +66,15 @@ export default function ProjectsSection() {
   }, []);
 
   const projects = [
+     {
+      id: "ai-recipe",
+      title: "Chef's AI Studio",
+      description: "A premium, hands-free culinary AI — scan your fridge, generate recipes in real time, cook step-by-step with voice commands, and remix dishes with a single tap. Built with React, Framer Motion, and OpenAI + Spoonacular APIs.",
+      tech: ["React", "Node.js", "OpenAI API", "CSS Modules"],
+      image: "/assets/images/ai_recipe.png",
+      deployedLink: "https://chefs-ai-studio.vercel.app/", // Live Deployed
+      githubLink: "https://github.com/veena694/Chef-s-AI-Studio", // GitHub code
+    },
     {
       id: "entreskill",
       title: "EntreSkill Hub Full Stack Platform",
@@ -91,15 +100,6 @@ export default function ProjectsSection() {
       image: "/assets/images/golf_charity.png",
       deployedLink: "https://golfcharitysubscriptionplatform-chi.vercel.app/", // Live Deployed
       githubLink: "https://github.com/veena694/Golf-Charity-Subscription-Platform", // GitHub code
-    },
-    {
-      id: "ai-recipe",
-      title: "Chef's AI Studio",
-      description: "A premium, hands-free culinary AI — scan your fridge, generate recipes in real time, cook step-by-step with voice commands, and remix dishes with a single tap. Built with React, Framer Motion, and OpenAI + Spoonacular APIs.",
-      tech: ["React", "Node.js", "OpenAI API", "CSS Modules"],
-      image: "/assets/images/ai_recipe.png",
-      deployedLink: "https://chefs-ai-studio.vercel.app/", // Live Deployed
-      githubLink: "https://github.com/veena694/Chef-s-AI-Studio", // GitHub code
     },
     {
       id: "library-explorer",
