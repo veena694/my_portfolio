@@ -14,7 +14,6 @@ export const About: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="01 ABOUT"
           subtitle="ENGINEERING PHILOSOPHY & IDENTITY"
           titlePrefix="A developer who thinks in"
           serifItalicWord="systems."
