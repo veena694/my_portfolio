@@ -19,44 +19,81 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
     const video = videoRef.current;
     if (!video) return;
 
-    // 1. Attempt autoplay with sound enabled
+    // 1. Configure audio properties for immediate unmuted playback
     video.volume = 1;
     video.muted = false;
 
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Autoplay with sound succeeded
-          setIsMuted(false);
-        })
-        .catch(() => {
-          // Browser autoplay policy blocked unmuted playback.
-          // Gracefully fall back to muted playback to ensure continuous video display.
-          video.muted = true;
-          setIsMuted(true);
-          video.play().catch(() => {});
-        });
-    }
-
-    // 2. If blocked by browser, allow the first user interaction anywhere on the page to activate sound
-    const handleFirstInteraction = () => {
+    const attemptAutoplay = () => {
       const v = videoRef.current;
       if (!v) return;
-      if (v.muted) {
-        v.muted = false;
-        v.play()
+
+      v.muted = false;
+      v.volume = 1;
+      const playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise
           .then(() => {
             setIsMuted(false);
           })
           .catch(() => {
+            // Browser autoplay policy blocked unmuted playback without prior user gesture.
+            // Start video muted so presentation is not blocked, but register global listeners
+            // so the very first user interaction anywhere unblocks audio immediately.
             v.muted = true;
             setIsMuted(true);
+            v.play().catch(() => {});
           });
       }
     };
 
-    window.addEventListener('pointerdown', handleFirstInteraction, { once: true });
+    // Attempt immediately if video metadata/data has already loaded
+    if (video.readyState >= 2) {
+      attemptAutoplay();
+    } else {
+      video.addEventListener('canplay', attemptAutoplay, { once: true });
+      video.addEventListener('loadeddata', attemptAutoplay, { once: true });
+    }
+
+    // 2. Global interaction unlockers:
+    // If the browser initially blocked unmuted playback on fresh load,
+    // the first tap, click, scroll, touch, or keydown on the page immediately unblocks and unmutes audio.
+    const handleUserGesture = () => {
+      const v = videoRef.current;
+      if (!v) return;
+      if (v.muted) {
+        v.muted = false;
+        v.volume = 1;
+        v.play()
+          .then(() => {
+            setIsMuted(false);
+            cleanupGestureListeners();
+          })
+          .catch(() => {});
+      } else {
+        cleanupGestureListeners();
+      }
+    };
+
+    const gestureEvents = [
+      'pointerdown',
+      'mousedown',
+      'touchstart',
+      'touchend',
+      'click',
+      'keydown',
+      'wheel',
+      'scroll',
+    ];
+
+    const cleanupGestureListeners = () => {
+      gestureEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleUserGesture);
+      });
+    };
+
+    gestureEvents.forEach((evt) => {
+      window.addEventListener(evt, handleUserGesture, { passive: true });
+    });
 
     // 3. IntersectionObserver to pause/resume video when off-screen
     const observer = new IntersectionObserver(
@@ -77,7 +114,9 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
     }
 
     return () => {
-      window.removeEventListener('pointerdown', handleFirstInteraction);
+      cleanupGestureListeners();
+      video.removeEventListener('canplay', attemptAutoplay);
+      video.removeEventListener('loadeddata', attemptAutoplay);
       observer.disconnect();
     };
   }, []);
@@ -89,6 +128,7 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
 
     if (isMuted) {
       video.muted = false;
+      video.volume = 1;
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
