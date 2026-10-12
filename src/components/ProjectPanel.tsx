@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ProjectItem } from '@/lib/data';
-import { ExternalLink, Github, Sparkles, Layers, Terminal, Database, Code2 } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, Layers, Terminal, Database, Code2, FileText } from 'lucide-react';
 import { Button } from '@/ui/Button';
 
 interface ProjectPanelProps {
@@ -139,25 +139,29 @@ export const ProjectPanel: React.FC<ProjectPanelProps> = ({ project }) => {
           </div>
         );
 
-      case 'jobportal':
+      case 'jobmarket':
         return (
-          <div className="w-full h-full bg-slate-900 text-slate-100 p-4 font-mono text-xs flex flex-col justify-between">
-            <div className="flex items-center justify-between border-b border-slate-700 pb-2">
-              <span className="text-blue-400 font-bold">JOB PORTAL (CODEALPHA)</span>
-              <span className="text-slate-400 text-[10px]">ANGULAR + POSTGRESQL</span>
+          <div className="w-full h-full bg-slate-950 text-slate-100 p-4 font-mono text-xs flex flex-col justify-between">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span className="text-emerald-400 font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                JOB MARKET INTELLIGENCE
+              </span>
+              <span className="text-slate-400 text-[10px]">STREAMLIT + NLP</span>
             </div>
             <div className="space-y-2 py-3 text-[11px]">
-              <div className="bg-slate-800 p-2 border border-slate-700 flex justify-between">
-                <span>JWT Auth & Access Control</span>
-                <span className="text-emerald-400">Secured</span>
+              <div className="bg-slate-900 p-2.5 border border-slate-800 flex justify-between items-center">
+                <span className="text-slate-300">Cloud Analytics Premium</span>
+                <span className="text-emerald-400 font-bold">+23% Uplift</span>
               </div>
-              <div className="bg-slate-800 p-2 border border-slate-700 flex justify-between">
-                <span>Resume Upload Pipeline</span>
-                <span className="text-blue-300">Active</span>
+              <div className="bg-slate-900 p-2 border border-slate-800 text-[10px] flex justify-between">
+                <span className="text-slate-400">Demand Multiplier</span>
+                <span className="text-amber-400">3.1× High Velocity</span>
               </div>
             </div>
-            <div className="text-[10px] text-slate-400 border-t border-slate-700 pt-2">
-              OPTIMIZED SQL SEARCH QUERIES
+            <div className="text-[10px] text-slate-400 border-t border-slate-800 pt-2 flex justify-between">
+              <span>POSTING VOLUME: 62%</span>
+              <span className="text-emerald-400">NLP MODEL: ACTIVE</span>
             </div>
           </div>
         );
@@ -201,13 +205,11 @@ export const ProjectPanel: React.FC<ProjectPanelProps> = ({ project }) => {
         {/* Left Side: Editorial Content */}
         <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
           <div>
-            {/* Top Category Badge & Project Number */}
+            {/* Top Category Badge */}
             <div className="flex items-center justify-between border-b border-borderSubtle pb-4 mb-4">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold px-2 py-0.5 bg-dark text-surface">
-                  {project.number}
-                </span>
-                <span className="font-mono text-xs uppercase tracking-widest text-mediumGray">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-dark" />
+                <span className="font-mono text-xs uppercase tracking-widest text-dark font-semibold">
                   {project.categoryLabel}
                 </span>
               </div>
@@ -238,16 +240,27 @@ export const ProjectPanel: React.FC<ProjectPanelProps> = ({ project }) => {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+              {project.caseStudyUrl && (
+                <Button
+                  href={project.caseStudyUrl}
+                  variant="primary"
+                  size="sm"
+                  icon={<FileText className="w-3.5 h-3.5" />}
+                >
+                  View Case Study
+                </Button>
+              )}
+
               {project.liveUrl && (
                 <Button
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  variant="primary"
+                  variant={project.caseStudyUrl ? 'secondary' : 'primary'}
                   size="sm"
                   icon={<ExternalLink className="w-3.5 h-3.5" />}
                 >
-                  Live Demo
+                  {project.category === 'data' ? 'Live Dashboard' : 'Live Demo'}
                 </Button>
               )}
 

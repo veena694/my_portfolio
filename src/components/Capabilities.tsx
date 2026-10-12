@@ -15,7 +15,6 @@ export const Capabilities: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="02 CAPABILITIES"
           subtitle="TECHNICAL CORE & DISCIPLINE"
           titlePrefix="What I can"
           serifItalicWord="build."
@@ -38,10 +37,11 @@ export const Capabilities: React.FC = () => {
                   }`}
                 >
                   <div className="space-y-6">
-                    {/* Header: Number & Icon Indicator */}
+                    {/* Header: Indicator Badge & Arrow */}
                     <div className="flex items-center justify-between border-b border-borderSubtle pb-4">
-                      <span className="font-mono text-xl font-bold text-dark">
-                        {cap.number}
+                      <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-dark font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-dark" />
+                        CAPABILITY
                       </span>
                       <ArrowUpRight
                         className={`w-5 h-5 transition-transform duration-300 ${

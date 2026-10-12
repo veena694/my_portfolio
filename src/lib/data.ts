@@ -36,7 +36,6 @@ export interface SkillItem {
 
 export interface ProjectItem {
   id: string;
-  number: string;
   title: string;
   category: 'software' | 'frontend' | 'fullstack' | 'data' | 'ai';
   categoryLabel: string;
@@ -44,15 +43,16 @@ export interface ProjectItem {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
+  caseStudyUrl?: string;
   featured: boolean;
-  uiStyle: 'hometown' | 'entreskill' | 'chefs' | 'agriguard' | 'golf' | 'jobportal' | 'weather';
+  uiStyle: 'hometown' | 'entreskill' | 'chefs' | 'agriguard' | 'golf' | 'jobmarket' | 'weather';
 }
 
 export interface AnalyticsProject {
   id: string;
-  number: string;
   title: string;
   subtitle: string;
+  tabLabel: string;
   workflow: {
     question: string;
     data: string;
@@ -64,7 +64,12 @@ export interface AnalyticsProject {
   metrics: { label: string; value: string }[];
   technologies: string[];
   liveUrl?: string;
-  caseStudyUrl?: string;
+  caseStudyUrl: string;
+}
+
+export interface ExperienceProof {
+  label: string;
+  url: string;
 }
 
 export interface ExperienceItem {
@@ -76,15 +81,18 @@ export interface ExperienceItem {
   description: string[];
   technologies: string[];
   link?: string;
+  proofDocuments?: ExperienceProof[];
 }
 
 export interface CertificationItem {
   id: string;
-  number: string;
   title: string;
   issuer: string;
   date: string;
   url?: string;
+  pdfUrl: string;
+  category: 'data' | 'ai' | 'fullstack' | 'frontend' | 'management';
+  categoryLabel: string;
   skills: string[];
 }
 
@@ -141,7 +149,7 @@ export const ROLE_MODES: RoleMode[] = [
     subtitle: "Scalable Web Products & Database Systems",
     description: "Connecting intuitive user interfaces with secure RESTful backends, authentication systems, cloud storage, and optimized database queries.",
     featuredSkills: ["React", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Supabase", "Prisma", "Stripe API"],
-    featuredProjects: ["golf-charity", "entreskill-hub", "job-portal"]
+    featuredProjects: ["golf-charity", "entreskill-hub", "job-market-analysis"]
   },
   {
     id: "data",
@@ -155,7 +163,6 @@ export const ROLE_MODES: RoleMode[] = [
 
 export const CAPABILITIES = [
   {
-    number: "01",
     id: "software-engineering",
     title: "SOFTWARE ENGINEERING",
     description: "Designing structured codebases, object-oriented & functional architectures, and reliable API integrations with comprehensive testing and CI/CD pipelines.",
@@ -163,7 +170,6 @@ export const CAPABILITIES = [
     highlights: "Focus on clean code, modular components, and reliable production deployment."
   },
   {
-    number: "02",
     id: "frontend-development",
     title: "FRONTEND DEVELOPMENT",
     description: "Building responsive, modern, accessible web experiences featuring complex state management, custom animation micro-interactions, and high performance.",
@@ -171,7 +177,6 @@ export const CAPABILITIES = [
     highlights: "Subtle micro-interactions, responsive fluid layouts, and top-tier Lighthouse audit scores."
   },
   {
-    number: "03",
     id: "fullstack-development",
     title: "FULL STACK DEVELOPMENT",
     description: "Architecting web platforms end-to-end with secure JWT / OAuth authentication, database schemas, serverless functions, payment integration, and cloud hosting.",
@@ -179,7 +184,6 @@ export const CAPABILITIES = [
     highlights: "Role-based access control, relational and document databases, and transaction processing."
   },
   {
-    number: "04",
     id: "data-analytics",
     title: "DATA ANALYTICS & BI",
     description: "Extracting actionable insights through multi-CTE SQL queries, cohort retention analysis, data cleaning pipelines, interactive dashboards, and NLP text mining.",
@@ -196,9 +200,9 @@ export const SKILLS: SkillItem[] = [
   { id: "python", symbol: "Py", name: "Python", category: "Programming", level: "Advanced", description: "Pandas, NumPy, Deep Learning benchmarking, NLP", relatedProjects: ["AI Job Market Analysis", "IEEE Research Paper"] },
   { id: "tailwind", symbol: "Tw", name: "Tailwind CSS", category: "Frontend", level: "Expert", description: "Custom design systems, responsive grids, dark mode", relatedProjects: ["Hometown Hub", "Weather App"] },
   { id: "nodejs", symbol: "Node", name: "Node.js", category: "Backend", level: "Advanced", description: "REST APIs, Event Driven Architecture, Middleware", relatedProjects: ["EntreSkill Hub", "Golf Charity Platform"] },
-  { id: "express", symbol: "Ex", name: "Express.js", category: "Backend", level: "Advanced", description: "Routing, JWT Authentication, Error Handling", relatedProjects: ["Job Portal", "Precision AgriGuard"] },
+  { id: "express", symbol: "Ex", name: "Express.js", category: "Backend", level: "Advanced", description: "Routing, JWT Authentication, Error Handling", relatedProjects: ["Precision AgriGuard", "Golf Charity Platform"] },
   { id: "sql", symbol: "Sql", name: "SQL", category: "Databases", level: "Expert", description: "Window Functions, Multi-CTE queries, Aggregations", relatedProjects: ["Retail SQL Analytics", "Job Market Analysis"] },
-  { id: "postgresql", symbol: "Pg", name: "PostgreSQL", category: "Databases", level: "Advanced", description: "Schema Design, Indexes, Foreign Keys, Query Optimization", relatedProjects: ["Job Portal", "Hometown Hub"] },
+  { id: "postgresql", symbol: "Pg", name: "PostgreSQL", category: "Databases", level: "Advanced", description: "Schema Design, Indexes, Foreign Keys, Query Optimization", relatedProjects: ["Hometown Hub", "Retail SQL Analytics"] },
   { id: "mongodb", symbol: "Db", name: "MongoDB", category: "Databases", level: "Advanced", description: "Mongoose, Aggregation Pipelines, Document Modeling", relatedProjects: ["Precision AgriGuard", "MERN Stack Apps"] },
   { id: "supabase", symbol: "Sb", name: "Supabase", category: "Backend", level: "Advanced", description: "Row Level Security, Realtime, Auth, Storage", relatedProjects: ["Golf Charity Platform", "Hometown Hub"] },
   { id: "prisma", symbol: "Pr", name: "Prisma ORM", category: "Backend", level: "Intermediate", description: "Migrations, Type-safe DB queries, Schema Modeling", relatedProjects: ["EntreSkill Hub", "Hometown Hub"] },
@@ -213,8 +217,20 @@ export const SKILLS: SkillItem[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: "job-market-analysis",
+    title: "AI-Powered Job Market & Skill Gap Analysis Dashboard",
+    category: "data",
+    categoryLabel: "DATA ANALYTICS & AI",
+    description: "An analytics case study exploring job-market demand, technical skill requirements, salary benchmarks, and emerging technology trends to identify skill gaps and career opportunities.",
+    technologies: ["Python", "SQL", "Pandas", "NLP", "Streamlit", "Data Visualization"],
+    githubUrl: "https://github.com/veena694",
+    liveUrl: "https://job-skill-gap-analysis.streamlit.app/",
+    caseStudyUrl: "/case-studies/job-market-skill-gap",
+    featured: true,
+    uiStyle: "jobmarket"
+  },
+  {
     id: "hometown-hub",
-    number: "01",
     title: "Hometown Hub",
     category: "fullstack",
     categoryLabel: "FULL STACK / 3D GRAPHICS",
@@ -227,7 +243,6 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "entreskill-hub",
-    number: "02",
     title: "EntreSkill Hub Full Stack Platform",
     category: "fullstack",
     categoryLabel: "ENTERPRISE PLATFORM",
@@ -240,7 +255,6 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "chefs-ai-studio",
-    number: "03",
     title: "Chef's AI Studio",
     category: "ai",
     categoryLabel: "AI & VISION PLATFORM",
@@ -253,7 +267,6 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "precision-agriguard",
-    number: "04",
     title: "Precision AgriGuard",
     category: "software",
     categoryLabel: "AI & IOT PLATFORM",
@@ -266,7 +279,6 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "golf-charity",
-    number: "05",
     title: "Golf Charity Subscription Platform",
     category: "fullstack",
     categoryLabel: "FINTECH & REWARDS",
@@ -278,21 +290,7 @@ export const PROJECTS: ProjectItem[] = [
     uiStyle: "golf"
   },
   {
-    id: "job-portal",
-    number: "06",
-    title: "Scalable Full-Stack Job Portal",
-    category: "software",
-    categoryLabel: "SOFTWARE ENGINEERING",
-    description: "Full-stack web application built at CodeAlpha with Angular frontend, Node.js REST APIs, PostgreSQL schema optimization, JWT role-based access control, resume uploads, and advanced multi-parameter search.",
-    technologies: ["Angular", "Node.js", "Express.js", "PostgreSQL", "JWT", "Git / GitHub"],
-    githubUrl: "https://github.com/veena694",
-    liveUrl: "https://my-portfolio-eight-gilt-18.vercel.app/",
-    featured: false,
-    uiStyle: "jobportal"
-  },
-  {
     id: "weather-app",
-    number: "07",
     title: "3D Weather Web Application",
     category: "frontend",
     categoryLabel: "FRONTEND & WEBGL",
@@ -308,9 +306,9 @@ export const PROJECTS: ProjectItem[] = [
 export const ANALYTICS_PROJECTS: AnalyticsProject[] = [
   {
     id: "job-market-analysis",
-    number: "01",
     title: "AI-Powered Job Market & Skill Gap Analysis Dashboard",
     subtitle: "NLP skill extraction, salary benchmarks & cloud analytics demand quantification",
+    tabLabel: "Job Market & Skills",
     workflow: {
       question: "What specific technical skills drive the highest salary premiums and skill gaps in modern tech job postings?",
       data: "Ingested thousands of structured tech job descriptions across software engineering, cloud, and data roles.",
@@ -326,13 +324,13 @@ export const ANALYTICS_PROJECTS: AnalyticsProject[] = [
     ],
     technologies: ["Python", "SQL", "Pandas", "NLP", "Streamlit", "Data Visualization"],
     liveUrl: "https://job-skill-gap-analysis.streamlit.app/",
-    caseStudyUrl: "https://veena-data-analyst-portfolio.lovable.app/projects/job-market"
+    caseStudyUrl: "/case-studies/job-market-skill-gap"
   },
   {
     id: "retail-sql-analytics",
-    number: "02",
     title: "Retail Business Analytics using Advanced SQL",
     subtitle: "Pure-SQL analytics layer over transactional schemas isolate margin leakage & customer cohorts",
+    tabLabel: "Retail SQL Analytics",
     workflow: {
       question: "Why is net profit slipping despite steady order volume growth across retail distribution channels?",
       data: "Multi-table relational order model containing transactional line items, returns, customer profiles, and channel metadata.",
@@ -347,13 +345,13 @@ export const ANALYTICS_PROJECTS: AnalyticsProject[] = [
       { label: "Dead Stock Flagged", value: "11%" }
     ],
     technologies: ["PostgreSQL", "MySQL", "Window Functions", "Multi-CTE Logic", "Cohort Analysis"],
-    caseStudyUrl: "https://veena-data-analyst-portfolio.lovable.app/projects/retail-sql"
+    caseStudyUrl: "/case-studies/retail-business-analytics"
   },
   {
     id: "deloitte-simulation",
-    number: "03",
     title: "Deloitte Australia Data Analytics Job Simulation",
     subtitle: "Forensic data review, spreadsheet financial modeling & executive Tableau story dashboard",
+    tabLabel: "Deloitte Simulation",
     workflow: {
       question: "How can executive leadership streamline reporting across 14 fragmented operational data surfaces?",
       data: "Client data extracts covering operational metrics, customer transaction logs, and financial statement line items.",
@@ -368,7 +366,7 @@ export const ANALYTICS_PROJECTS: AnalyticsProject[] = [
       { label: "Actionable Insights Delivered", value: "Ranked" }
     ],
     technologies: ["Excel", "Power Query", "Tableau", "Forensic Data Analysis", "Executive Reporting"],
-    caseStudyUrl: "https://veena-data-analyst-portfolio.lovable.app/projects/deloitte"
+    caseStudyUrl: "/case-studies/deloitte-australia"
   }
 ];
 
@@ -385,7 +383,13 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Designed EntreSkill Hub, a skill-to-startup platform providing aspiring founders with structured resources, tools, and learning pathways.",
       "Integrated REST APIs and Firebase services for dynamic data management, cloud database operations, and real-time app features."
     ],
-    technologies: ["React.js", "Next.js", "JavaScript", "Firebase", "REST APIs", "Tailwind CSS"]
+    technologies: ["React.js", "Next.js", "JavaScript", "Firebase", "REST APIs", "Tailwind CSS"],
+    proofDocuments: [
+      {
+        label: "Internship Certificate",
+        url: "/Experiences/Unified%20Mentor%20Certificate.pdf"
+      }
+    ]
   },
   {
     id: "exp-yuvaintern",
@@ -400,7 +404,13 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Replaced manual spreadsheet reporting with an optimized SQL query layer that reduced turnaround time by 92%."
     ],
     technologies: ["SQL", "PostgreSQL", "Cohort Analysis", "RFM Segmentation", "Data Modeling"],
-    link: "https://drive.google.com/file/d/1RoiUPM51kHJQw-F8_3khVdWBNRrlASZB/view?usp=drivesdk"
+    link: "/Experiences/Virtual%20R%20Data%20Analyst%20Intern.pdf",
+    proofDocuments: [
+      {
+        label: "Experience Certificate",
+        url: "/Experiences/Virtual%20R%20Data%20Analyst%20Intern.pdf"
+      }
+    ]
   },
   {
     id: "exp-codealpha",
@@ -409,12 +419,22 @@ export const EXPERIENCE: ExperienceItem[] = [
     organization: "CodeAlpha",
     type: "experience",
     description: [
-      "Engineered a scalable full-stack job portal covering frontend, backend, and database layers throughout the software development lifecycle.",
-      "Implemented secure authentication, job listings, candidate application tracking, and employer management using Angular, Node.js, and PostgreSQL.",
+      "Engineered scalable web applications covering frontend, backend, and database layers throughout the software development lifecycle.",
+      "Implemented secure authentication, candidate application tracking, and candidate management using Angular, Node.js, and PostgreSQL.",
       "Optimized PostgreSQL schemas and SQL queries to support efficient search, multi-parameter filtering, and role-based access control (JWT).",
       "Collaborated in an Agile Git/GitHub workflow, practicing CI/CD deployments and integration testing."
     ],
-    technologies: ["Angular", "Node.js", "Express.js", "PostgreSQL", "JWT", "REST APIs", "Git"]
+    technologies: ["Angular", "Node.js", "Express.js", "PostgreSQL", "JWT", "REST APIs", "Git"],
+    proofDocuments: [
+      {
+        label: "Internship Certificate",
+        url: "/Experiences/Code%20Alpha%20Certificate.pdf"
+      },
+      {
+        label: "Letter of Recommendation",
+        url: "/Experiences/Code%20Alpha%20Letter%20of%20Recommendation.pdf"
+      }
+    ]
   },
   {
     id: "exp-cipherschools",
@@ -427,7 +447,17 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Developed scalable REST APIs using Node.js and Express.js with role-based access control (JWT & bcrypt).",
       "Crafted reusable React components with Hooks and Context API for modular state management and clean component hierarchy."
     ],
-    technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Vercel", "REST APIs"]
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Vercel", "REST APIs"],
+    proofDocuments: [
+      {
+        label: "Project Certificate",
+        url: "/Experiences/CipherSchool%20Project%20Certificate.pdf"
+      },
+      {
+        label: "Training Certificate",
+        url: "/Experiences/CipherSchools%20training.pdf"
+      }
+    ]
   },
   {
     id: "edu-lpu",
@@ -454,97 +484,250 @@ export const RESEARCH: ResearchItem = {
 };
 
 export const CERTIFICATIONS: CertificationItem[] = [
+  // --- Category: Data Analytics & BI ---
   {
     id: "cert-google-analytics",
-    number: "01",
     title: "Google Data Analytics Professional Certificate",
     issuer: "Google / Coursera",
-    date: "Nov 2025",
-    url: "https://www.coursera.org/account/accomplishments/specialization/1BLYBEGQOKW8",
-    skills: ["Data Cleaning", "R Programming", "Python", "SQL", "Data Visualization", "Data-Driven Decision Making"]
+    date: "Jul 2026",
+    category: "data",
+    categoryLabel: "Data Analytics & BI",
+    url: "https://coursera.org/verify/professional-cert/1BLYBEGQOKW8",
+    pdfUrl: "/Achievements/Google%20Data%20Analytics.pdf",
+    skills: ["SQL", "Tableau", "Python", "Data Cleaning", "Data Analytics", "Spreadsheets"]
   },
   {
     id: "cert-sap-analytics",
-    number: "02",
     title: "SAP Certified – Data Analyst – SAP Analytics Cloud",
     issuer: "SAP",
     date: "Apr 2026",
+    category: "data",
+    categoryLabel: "Data Analytics & BI",
     url: "https://www.credly.com/badges/11000eb1-db51-43a0-bccb-20cd4e613898",
+    pdfUrl: "/Achievements/SAPCertification_12216918%20(1).pdf",
     skills: ["SAP Analytics Cloud", "Data Modeling", "Stories", "Enterprise Reporting", "Analytics"]
   },
   {
     id: "cert-deloitte",
-    number: "03",
     title: "Deloitte Australia Data Analytics Job Simulation",
-    issuer: "Forage",
-    date: "Apr 2026",
+    issuer: "Deloitte / Forage",
+    date: "Jun 2026",
+    category: "data",
+    categoryLabel: "Data Analytics & BI",
     url: "https://theforage.com",
-    skills: ["Forensic Data Analysis", "Excel", "Tableau", "Business Insights", "Executive Reporting"]
+    pdfUrl: "/Achievements/Forage%20Certificate.pdf",
+    skills: ["Data Analysis", "Forensic Technology", "Tableau", "Executive Reporting"]
   },
   {
-    id: "cert-project-mgmt",
-    number: "04",
-    title: "Project Management Specialization",
-    issuer: "University of Colorado Boulder (Coursera)",
-    date: "Apr 2026",
-    skills: ["Project Lifecycle", "Agile", "Risk Assessment", "Stakeholder Communication"]
+    id: "cert-chatgpt-data-analysis",
+    title: "ChatGPT Advanced Data Analysis",
+    issuer: "Vanderbilt University / Coursera",
+    date: "Apr 2024",
+    category: "data",
+    categoryLabel: "Data Analytics & BI",
+    url: "https://coursera.org/verify/P9YFQZQBDDEF",
+    pdfUrl: "/Achievements/ChatGPT%20Advanced%20Data%20Analysis.pdf",
+    skills: ["AI-Driven Analytics", "Python Automation", "Statistical EDA", "LLM Scripting"]
   },
-  {
-    id: "cert-google-ux",
-    number: "05",
-    title: "Google UX Design Professional Certificate",
-    issuer: "Google / Coursera",
-    date: "Nov 2025",
-    skills: ["User Research", "Wireframing", "Figma Prototyping", "Usability Testing", "UI Accessibility"]
-  },
+
+  // --- Category: AI & Machine Learning ---
   {
     id: "cert-infosys-genai",
-    number: "06",
     title: "Principles of Generative AI Certification",
     issuer: "Infosys Springboard",
     date: "May 2025",
+    category: "ai",
+    categoryLabel: "AI & Machine Learning",
+    url: "https://verify.onwingspan.com",
+    pdfUrl: "/Achievements/Principles%20of%20Generative%20AI%20Certification.pdf",
     skills: ["Generative AI", "LLMs", "Prompt Engineering", "AI Ethics"]
   },
   {
+    id: "cert-genai-everyone",
+    title: "GenAI for Everyone",
+    issuer: "Fractal Analytics / Coursera",
+    date: "Jan 2024",
+    category: "ai",
+    categoryLabel: "AI & Machine Learning",
+    url: "https://coursera.org/verify/HW344YWRM6W8",
+    pdfUrl: "/Achievements/GenAI%20for%20Everyone.pdf",
+    skills: ["Generative AI", "Enterprise AI Applications", "Analytics Strategy"]
+  },
+  {
+    id: "cert-ibm-prompt",
+    title: "Generative AI: Prompt Engineering Basics",
+    issuer: "IBM / Coursera",
+    date: "Oct 2025",
+    category: "ai",
+    categoryLabel: "AI & Machine Learning",
+    url: "https://coursera.org/verify/95Z8D2NV1UBT",
+    pdfUrl: "/Achievements/Generative%20AI%20%20Prompt%20Engineering%20Basics.pdf",
+    skills: ["Prompt Engineering", "LLM Fine-Tuning", "Context Engineering", "Few-Shot Prompting"]
+  },
+  {
+    id: "cert-chatgpt-nlp",
+    title: "ChatGPT Playground for Beginners: Intro to NLP",
+    issuer: "Coursera Project Network",
+    date: "Apr 2024",
+    category: "ai",
+    categoryLabel: "AI & Machine Learning",
+    url: "https://coursera.org/verify/CZQB7LB5CN6P",
+    pdfUrl: "/Achievements/ChatGPT%20Playground%20for%20Beginners%20Intro%20to%20NLP.pdf",
+    skills: ["Natural Language Processing", "NLP Pipelines", "Text Mining", "Prompt Tuning"]
+  },
+  {
+    id: "cert-chatgpt-excel",
+    title: "ChatGPT for Beginners: Save time with Microsoft Excel",
+    issuer: "Coursera Project Network",
+    date: "Apr 2024",
+    category: "ai",
+    categoryLabel: "AI & Machine Learning",
+    url: "https://coursera.org/verify/GKBX6Z4HD857",
+    pdfUrl: "/Achievements/ChatGPT%20for%20Beginners%20%20Save%20time%20with%20Microsoft.pdf",
+    skills: ["Excel Automation", "AI Workflows", "Formulas & Macros", "Productivity"]
+  },
+
+  // --- Category: Full Stack & Cloud Architecture ---
+  {
+    id: "cert-node-niit",
+    title: "Server side JavaScript with Node.js",
+    issuer: "NIIT / Coursera",
+    date: "May 2024",
+    category: "fullstack",
+    categoryLabel: "Full Stack & Cloud",
+    url: "https://coursera.org/verify/FH5HY6Y43U5P",
+    pdfUrl: "/Achievements/Server%20side%20JavaScript%20with%20Nodejs.pdf",
+    skills: ["Node.js", "Express.js", "REST APIs", "Async Architecture", "Middleware"]
+  },
+  {
+    id: "cert-php-michigan",
+    title: "Building Web Applications in PHP",
+    issuer: "University of Michigan / Coursera",
+    date: "Nov 2024",
+    category: "fullstack",
+    categoryLabel: "Full Stack & Cloud",
+    url: "https://coursera.org/verify/UHTSN3QADHVH",
+    pdfUrl: "/Achievements/Building%20Web%20Applications%20in%20PHP.pdf",
+    skills: ["PHP", "MySQL", "Web Applications", "Relational Databases", "Backend Scripting"]
+  },
+  {
+    id: "cert-cloud-nptel",
+    title: "Cloud Computing (12-Week Course)",
+    issuer: "NPTEL / Swayam (IIT Kharagpur)",
+    date: "Jul - Oct 2024",
+    category: "fullstack",
+    categoryLabel: "Full Stack & Cloud",
+    pdfUrl: "/Achievements/Cloud%20Computing%20(1).pdf",
+    skills: ["Cloud Architecture", "AWS", "Virtualization", "Distributed Systems"]
+  },
+  {
+    id: "cert-algo-cuboulder",
+    title: "Approximation Algorithms and Linear Programming",
+    issuer: "University of Colorado Boulder / Coursera",
+    date: "May 2024",
+    category: "fullstack",
+    categoryLabel: "Full Stack & Cloud",
+    url: "https://coursera.org/verify/ZE8B9XVYZCPH",
+    pdfUrl: "/Achievements/Approximation%20Algorithms%20and%20Linear.pdf",
+    skills: ["Algorithms", "Linear Programming", "Optimization", "Computational Complexity"]
+  },
+  {
+    id: "cert-cipherschools-project",
+    title: "Full Stack Development Using MERN Project Certificate",
+    issuer: "CipherSchools",
+    date: "Jun - Jul 2024",
+    category: "fullstack",
+    categoryLabel: "Full Stack & Cloud",
+    pdfUrl: "/Achievements/CipherSchool%20Project%20Certificate.pdf",
+    skills: ["MongoDB", "Express.js", "React.js", "Node.js", "MERN Stack"]
+  },
+  {
+    id: "cert-cipherschools-training",
+    title: "Industrial Training in Full-Stack MERN Stack",
+    issuer: "CipherSchools / LPU",
+    date: "Jul 2024",
+    category: "fullstack",
+    categoryLabel: "Full Stack & Cloud",
+    pdfUrl: "/Achievements/CipherSchools%20training.pdf",
+    skills: ["Full-Stack Architecture", "REST APIs", "MERN", "Production Workflows"]
+  },
+
+  // --- Category: Frontend Engineering & UX Design ---
+  {
+    id: "cert-google-ux",
+    title: "Google UX Design Professional Certificate",
+    issuer: "Google / Coursera",
+    date: "Oct 2026",
+    category: "frontend",
+    categoryLabel: "Frontend & UX Design",
+    url: "https://coursera.org/verify/professional-cert/HYI95MRFVX9S",
+    pdfUrl: "/Achievements/Google%20Ux%20Design.pdf",
+    skills: ["Figma", "Wireframing", "UX Research", "UI Prototyping", "Design Systems"]
+  },
+  {
     id: "cert-infosys-frontend",
-    number: "07",
     title: "Front End Web Developer Certification",
     issuer: "Infosys Springboard",
     date: "Apr 2025",
+    category: "frontend",
+    categoryLabel: "Frontend & UX Design",
+    url: "https://verify.onwingspan.com",
+    pdfUrl: "/Achievements/Front%20End%20Web%20Developer%20Certification.pdf",
     skills: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Web Architecture"]
   },
   {
-    id: "cert-nptel-cloud",
-    number: "08",
-    title: "Cloud Computing Certification",
-    issuer: "NPTEL",
-    date: "Jul 2024",
-    skills: ["Cloud Architecture", "AWS Concepts", "Virtualization", "Distributed Systems"]
+    id: "cert-jhu-web",
+    title: "HTML, CSS, and Javascript for Web Developers",
+    issuer: "Johns Hopkins University / Coursera",
+    date: "Apr 2024",
+    category: "frontend",
+    categoryLabel: "Frontend & UX Design",
+    url: "https://coursera.org/verify/V62JN45SJX3Q",
+    pdfUrl: "/Achievements/HTML%2C%20CSS%2C%20and%20Javascript%20for%20Web%20Developers.pdf",
+    skills: ["HTML5", "CSS3", "JavaScript ES6", "Web APIs", "Frontend Development"]
+  },
+
+  // --- Category: Professional & Management ---
+  {
+    id: "cert-project-mgmt",
+    title: "Project Management Specialization",
+    issuer: "University of Colorado Boulder / Coursera",
+    date: "Jun 2026",
+    category: "management",
+    categoryLabel: "Leadership & Management",
+    url: "https://coursera.org/verify/specialization/QZREVA33VFWC",
+    pdfUrl: "/Achievements/Project%20Managmen.pdf",
+    skills: ["Agile Project Management", "Project Planning & Execution", "Risk Assessment", "Scrum"]
   },
   {
-    id: "cert-cipherschools-mern",
-    number: "09",
-    title: "Full-Stack MERN Development",
-    issuer: "CipherSchools",
-    date: "Jun 2024",
-    skills: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs"]
+    id: "cert-business-comm",
+    title: "Basics of Business Communication",
+    issuer: "Infosys Springboard",
+    date: "Apr 2025",
+    category: "management",
+    categoryLabel: "Leadership & Management",
+    url: "https://verify.onwingspan.com",
+    pdfUrl: "/Achievements/Basics%20of%20Business%20Communication.pdf",
+    skills: ["Executive Communication", "Technical Writing", "Stakeholder Alignment"]
   },
   {
-    id: "cert-powerbi-30days",
-    number: "10",
-    title: "30 Days Power BI Micro Course",
-    issuer: "SkillCourse",
-    date: "2026",
-    url: "https://edu.skillcourse.in/view-certificate/SC-2MTTACT976",
-    skills: ["Power BI", "DAX", "Star Schema", "Row Level Security"]
+    id: "cert-goal-setting",
+    title: "Saving Time by Setting Goals",
+    issuer: "Infosys Springboard",
+    date: "Apr 2025",
+    category: "management",
+    categoryLabel: "Leadership & Management",
+    url: "https://verify.onwingspan.com",
+    pdfUrl: "/Achievements/Saving%20Time%20by%20Setting%20Goals.pdf",
+    skills: ["Time Architecture", "Sprint Planning", "Productivity Strategy"]
   }
 ];
 
 export const ACHIEVEMENTS = [
-  { number: "01", title: "IEEE Published Researcher", detail: "Peer-reviewed publication on Vision Transformers & CNNs at IEEE 2026 Conference." },
-  { number: "02", title: "Dual Technical Mastery", detail: "Proven competency across Software Engineering (React/Node) & Data Analytics (SQL/Power BI)." },
-  { number: "03", title: "3 Production Internships", detail: "Completed hands-on tenures at Unified Mentor, YuvaIntern, CodeAlpha, & CipherSchools." },
-  { number: "04", title: "Google & SAP Certified", detail: "Professional Credentials in Google Data Analytics and SAP Analytics Cloud." },
-  { number: "05", title: "HackerRank Top SQL 50", detail: "Demonstrated advanced multi-table SQL query capabilities and database optimization." },
-  { number: "06", title: "7+ Deployed Web Applications", detail: "Shipped end-to-end full-stack web platforms and interactive visual utilities." }
+  { title: "IEEE Published Researcher", detail: "Peer-reviewed publication on Vision Transformers & CNNs at IEEE 2026 Conference." },
+  { title: "Dual Technical Mastery", detail: "Proven competency across Software Engineering (React/Node) & Data Analytics (SQL/Power BI)." },
+  { title: "3 Production Internships", detail: "Completed hands-on tenures at Unified Mentor, YuvaIntern, CodeAlpha, & CipherSchools." },
+  { title: "Google & SAP Certified", detail: "Professional Credentials in Google Data Analytics and SAP Analytics Cloud." },
+  { title: "HackerRank Top SQL 50", detail: "Demonstrated advanced multi-table SQL query capabilities and database optimization." },
+  { title: "7+ Deployed Web Applications", detail: "Shipped end-to-end full-stack web platforms and interactive visual utilities." }
 ];

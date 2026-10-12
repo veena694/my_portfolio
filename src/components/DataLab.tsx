@@ -59,7 +59,6 @@ export const DataLab: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="04 DATA LAB"
           subtitle="ANALYTICAL RIGOR & BUSINESS INTELLIGENCE"
           titlePrefix="I don't just build with data. I explore"
           serifItalicWord="it."
@@ -98,7 +97,7 @@ export const DataLab: React.FC = () => {
                         : 'bg-surface text-darkGray border-borderSubtle hover:bg-softBg'
                     }`}
                   >
-                    {proj.number} • {proj.title.split(' ')[0]} {proj.title.split(' ')[1]}
+                    {proj.tabLabel || proj.title}
                   </button>
                 );
               })}
@@ -108,7 +107,7 @@ export const DataLab: React.FC = () => {
             <div className="bg-surface border border-borderSubtle p-6 sm:p-8 space-y-6 shadow-xs">
               <div className="border-b border-borderSubtle pb-4">
                 <span className="font-mono text-xs uppercase text-mediumGray">
-                  ANALYTICS CASE STUDY • {currentAnalytics.number}
+                  ANALYTICS CASE STUDY • {currentAnalytics.tabLabel}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-light text-dark tracking-tight mt-1">
                   {currentAnalytics.title}
@@ -169,11 +168,9 @@ export const DataLab: React.FC = () => {
                 {currentAnalytics.caseStudyUrl && (
                   <Button
                     href={currentAnalytics.caseStudyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     variant="secondary"
                     size="sm"
-                    icon={<ExternalLink className="w-3.5 h-3.5" />}
+                    icon={<ArrowRight className="w-3.5 h-3.5" />}
                   >
                     Read Case Study
                   </Button>

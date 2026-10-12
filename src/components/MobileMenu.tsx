@@ -81,12 +81,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                   onClick={onClose}
                   className="group flex items-center justify-between py-3 border-b border-borderSubtle/60 hover:border-dark transition-colors"
                 >
-                  <span className="font-mono text-xs text-mediumGray font-medium group-hover:text-dark">
-                    0{index + 1} —
-                  </span>
-                  <span className="text-2xl sm:text-3xl font-light tracking-tight text-dark group-hover:pl-2 transition-all">
-                    {link.name}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-borderSubtle group-hover:bg-dark transition-colors" />
+                    <span className="text-2xl sm:text-3xl font-light tracking-tight text-dark group-hover:pl-2 transition-all">
+                      {link.name}
+                    </span>
+                  </div>
                   <ArrowUpRight className="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" />
                 </a>
               </motion.div>

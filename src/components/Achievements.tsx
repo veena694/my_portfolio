@@ -14,7 +14,6 @@ export const Achievements: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="06 RESEARCH & ACHIEVEMENTS"
           subtitle="DEEP LEARNING PUBLICATION & MILESTONES"
           titlePrefix="Research. Build."
           serifItalicWord="Explore."
@@ -92,12 +91,12 @@ export const Achievements: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ACHIEVEMENTS.map((item, index) => (
-              <Reveal key={item.number} direction="up" delay={index * 0.1}>
+              <Reveal key={item.title} direction="up" delay={index * 0.1}>
                 <div className="bg-surface border border-borderSubtle p-6 hover:border-dark transition-all duration-300 h-full flex flex-col justify-between shadow-xs">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between border-b border-borderSubtle pb-3">
-                      <span className="font-mono text-xs font-bold text-mediumGray">
-                        {item.number}
+                      <span className="font-mono text-[11px] font-semibold text-mediumGray uppercase tracking-wider">
+                        KEY MILESTONE
                       </span>
                       <Award className="w-4 h-4 text-dark" />
                     </div>

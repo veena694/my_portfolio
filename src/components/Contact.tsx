@@ -22,7 +22,6 @@ export const Contact: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="07 CONTACT"
           subtitle="GET IN TOUCH & OPPORTUNITIES"
           titlePrefix="Let's build"
           serifItalicWord="something useful."

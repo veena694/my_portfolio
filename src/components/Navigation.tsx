@@ -21,7 +21,7 @@ export const Navigation: React.FC = () => {
       setScrolled(window.scrollY > 40);
 
       // Section tracking
-      const sections = ['about', 'capabilities', 'work', 'data-lab', 'experience', 'achievements', 'contact'];
+      const sections = ['about', 'capabilities', 'work', 'data-lab', 'experience', 'achievements', 'certifications', 'contact'];
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
         if (el) {
@@ -45,6 +45,7 @@ export const Navigation: React.FC = () => {
     { name: 'Data Lab', href: '#data-lab', id: 'data-lab' },
     { name: 'Experience', href: '#experience', id: 'experience' },
     { name: 'Achievements', href: '#achievements', id: 'achievements' },
+    { name: 'Certifications', href: '#certifications', id: 'certifications' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 

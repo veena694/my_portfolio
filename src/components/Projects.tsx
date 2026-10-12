@@ -11,10 +11,11 @@ export const Projects: React.FC = () => {
 
   const categories = [
     { label: 'ALL', value: 'ALL' },
+    { label: 'DATA & ANALYTICS', value: 'data' },
     { label: 'SOFTWARE', value: 'software' },
     { label: 'FRONTEND', value: 'frontend' },
     { label: 'FULL STACK', value: 'fullstack' },
-    { label: 'AI / ML', value: 'ai' },
+    { label: 'AI PLATFORMS', value: 'ai' },
   ];
 
   const filteredProjects = filter === 'ALL'
@@ -27,7 +28,6 @@ export const Projects: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="03 SELECTED WORK"
           subtitle="PROOF OF EXECUTION & SOFTWARE ENGINEERING"
           titlePrefix="Things I've"
           serifItalicWord="built."

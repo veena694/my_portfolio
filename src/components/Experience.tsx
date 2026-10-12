@@ -4,7 +4,7 @@ import React from 'react';
 import { SectionHeading } from '@/ui/SectionHeading';
 import { EXPERIENCE } from '@/lib/data';
 import { Reveal } from '@/ui/Reveal';
-import { GraduationCap, Briefcase, ExternalLink, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, Briefcase, ExternalLink, Calendar, MapPin, FileText } from 'lucide-react';
 
 export const Experience: React.FC = () => {
   return (
@@ -13,7 +13,6 @@ export const Experience: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="05 EXPERIENCE"
           subtitle="CAREER TIMELINE & ACADEMIC BACKGROUND"
           titlePrefix="Built through practice, projects and"
           serifItalicWord="experience."
@@ -82,17 +81,35 @@ export const Experience: React.FC = () => {
                         ))}
                       </div>
 
-                      {item.link && (
+                      {/* Verification Documents & Proofs */}
+                      {item.proofDocuments && item.proofDocuments.length > 0 ? (
+                        <div className="flex flex-wrap items-center gap-2">
+                          {item.proofDocuments.map((doc, dIdx) => (
+                            <a
+                              key={dIdx}
+                              href={doc.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1 font-mono text-[11px] bg-bgPrimary border border-borderSubtle text-dark hover:border-dark hover:bg-white transition-all shadow-2xs font-medium"
+                            >
+                              <FileText className="w-3.5 h-3.5 text-mediumGray" />
+                              <span>{doc.label}</span>
+                              <ExternalLink className="w-3 h-3 text-mediumGray" />
+                            </a>
+                          ))}
+                        </div>
+                      ) : item.link ? (
                         <a
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-mono text-xs text-dark hover:underline flex items-center gap-1 font-medium"
                         >
+                          <FileText className="w-3.5 h-3.5 text-mediumGray" />
                           <span>View Verification Document</span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>
-                      )}
+                      ) : null}
                     </div>
 
                   </div>

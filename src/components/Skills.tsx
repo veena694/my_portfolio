@@ -23,7 +23,6 @@ export const Skills: React.FC = () => {
         
         {/* Section Heading */}
         <SectionHeading
-          number="02.1 ECOSYSTEM"
           subtitle="TECHNICAL CONSTELLATION"
           titlePrefix="Interactive skill"
           serifItalicWord="matrix."

@@ -107,8 +107,8 @@ export const RoleSwitcher: React.FC = () => {
                   className="group block p-3 bg-surface border border-borderSubtle hover:border-dark transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[11px] text-mediumGray">
-                      {project.number} • {project.categoryLabel}
+                    <span className="font-mono text-[11px] text-mediumGray font-medium uppercase">
+                      {project.categoryLabel}
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </div>
