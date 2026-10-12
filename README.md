@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Veena — Personal Product Portfolio
 
-## Getting Started
+> **Software Engineer** · Frontend · Full Stack · Data Analytics  
+> Production-ready, recruiter-friendly personal portfolio built with Next.js 15, React 19, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+---
+
+## 🌟 Brand Narrative Concept
+
+Built around the core narrative:
+**BUILD → ANALYZE → SOLVE → CONNECT**
+
+Combining Software Engineering, Frontend Development, Full Stack Platforms, and Data Analytics into a single cohesive persona.
+
+---
+
+## 🛠️ Tech Stack & Tooling
+
+- **Framework**: Next.js 15 (App Router)
+- **UI Core**: React 19 & TypeScript
+- **Styling**: Tailwind CSS & CSS Custom Properties
+- **Typography**: Inter Tight (Primary Sans), Instrument Serif (Editorial Accent), JetBrains Mono (Technical Code)
+- **Motion**: Framer Motion & IntersectionObserver controls
+- **Icons**: Lucide React
+
+---
+
+## 🚀 Getting Started
+
+### 1. Installation
+
+```bash
+npm install
+```
+
+### 2. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+my_portfolio/
+├── public/
+│   ├── intro.mp4                  # Introduction video
+│   ├── resume/
+│   │   └── Veena_Resume.pdf       # Verified PDF Resume
+│   └── favicon.ico
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx             # Root layout with Google Fonts, metadata & JSON-LD
+│   │   ├── page.tsx               # Main portfolio page composing all sections
+│   │   └── globals.css            # Custom monochrome design tokens & typography utilities
+│   ├── components/
+│   │   ├── Navigation.tsx         # Sticky navigation with scroll progress line
+│   │   ├── MobileMenu.tsx         # Full-screen sequential entrance mobile menu
+│   │   ├── Hero.tsx               # High-impact Hero layout with video & outlined VEENA text
+│   │   ├── VideoHero.tsx          # HTML5 Video player with sound toggle & IntersectionObserver
+│   │   ├── About.tsx              # Identity Panel & vertical line connector
+│   │   ├── RoleSwitcher.tsx       # Interactive persona mode switcher (Software/Frontend/FullStack/Data)
+│   │   ├── Capabilities.tsx       # 4 vertical capability columns with hover expansion
+│   │   ├── Skills.tsx             # Periodic-table inspired skill constellation tile matrix
+│   │   ├── Projects.tsx           # Selected Work section with category filters
+│   │   ├── ProjectPanel.tsx       # Editorial project card with illustrative UI canvas
+│   │   ├── DataLab.tsx            # Dedicated Data Analytics section with 6-step workflow & BI dashboard
+│   │   ├── Chart.tsx              # Dynamic channel distribution chart
+│   │   ├── Experience.tsx         # Integrated timeline for internships & B.Tech degree
+│   │   ├── Achievements.tsx       # Published IEEE paper card & verified milestone grid
+│   │   ├── Certifications.tsx     # Minimal editorial row index table with flood hover effect
+│   │   ├── Contact.tsx            # High-impact contact section with instant 1-click email copy
+│   │   ├── Footer.tsx             # Minimalist footer
+│   │   ├── CustomCursor.tsx       # Desktop custom cursor indicator
+│   │   └── ScrollStory.tsx        # Scroll-driven narrative watermark indicator
+│   ├── ui/
+│   │   ├── Button.tsx             # Reusable button primitive
+│   │   ├── Reveal.tsx             # Framer Motion scroll reveal wrapper
+│   │   ├── SectionHeading.tsx     # Standardized editorial section header
+│   │   └── SkillTile.tsx          # Periodic-table style skill badge
+│   └── lib/
+│       ├── data.ts                # Authoritative typed portfolio dataset
+│       └── utils.ts               # Class merging utilities
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔒 Verification & Compliance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Zero-Fabrication Policy**: All data, projects, degree details, internships, certificates, and IEEE research paper links strictly match Veena's official CV and portfolio source materials.
+- **Performance & Accessibility**: Semantic HTML5 tags, `prefers-reduced-motion` compliance, accessible video controls, and `aria-live` email copy notifications.
