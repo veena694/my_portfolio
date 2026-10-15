@@ -61,13 +61,12 @@ export const Navigation: React.FC = () => {
 
       {/* Main Sticky Navbar */}
       <motion.header
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
             ? 'bg-bgPrimary/85 backdrop-blur-md border-b border-borderSubtle py-3 shadow-xs'
-            : 'bg-transparent py-5'
+            : 'bg-transparent py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -117,15 +116,14 @@ export const Navigation: React.FC = () => {
               <ArrowDownRight className="w-3.5 h-3.5 opacity-70" />
             </a>
 
-            {/* Mobile Hamburger Button */}
+            {/* Mobile Menu Button — matches approved reference */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden flex items-center gap-2 px-3 py-2 bg-surface border border-borderSubtle font-mono text-xs uppercase tracking-wider text-dark hover:bg-softBg transition-colors"
+              className="lg:hidden flex items-center gap-2.5 px-3.5 py-1.5 bg-white border border-black/15 font-mono text-xs uppercase tracking-wider text-black shadow-xs hover:bg-neutral-50 active:scale-95 transition-all"
               aria-label="Open menu"
             >
-              <span className="font-bold text-xs">V</span>
-              <span>Menu</span>
-              <Menu className="w-4 h-4 ml-1" />
+              <span className="font-bold text-xs tracking-wider">V MENU</span>
+              <Menu className="w-4 h-4" />
             </button>
           </div>
         </div>

@@ -167,15 +167,15 @@ export const VideoHero: React.FC<VideoHeroProps> = ({
         preload="auto"
         muted={isMuted}
         style={{ backgroundColor: '#EDE9DD' }}
-        className="w-auto h-full max-h-[76vh] sm:max-h-[82vh] md:max-h-[86vh] object-contain transition-opacity duration-700 pointer-events-auto z-10"
+        className="w-auto h-full max-h-[76vh] sm:max-h-[82vh] md:max-h-[86vh] object-contain transition-opacity duration-700 pointer-events-auto z-10 scale-[1.38] sm:scale-[1.24] md:scale-100 -translate-y-6 sm:-translate-y-3 md:translate-y-0 origin-center"
       />
 
       {/* Floating Sound Control Button with Concentric Pulse Rings */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 4.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-1 sm:bottom-3 z-30 flex items-center justify-center pointer-events-auto"
+        transition={{ duration: 0.6, delay: 2.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-3 md:right-auto md:left-1/2 md:-translate-x-1/2 z-30 flex items-center justify-center pointer-events-auto"
       >
         <div className="relative flex items-center justify-center">
           <div className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-black/10 pointer-events-none" />
